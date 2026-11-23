@@ -107,8 +107,8 @@ NetQuizV3/
 ### Windows (CMD / PowerShell, dari folder proyek)
 ```
 scripts\build.bat
-scripts\run-server.bat          :: jendela 1
-scripts\run-web.bat 8888        :: jendela 2, lalu buka http://localhost:8888
+scripts\run-server.bat          # terminal 1
+scripts\run-web.bat             # terminal 2, lalu buka http://localhost:8888
 ```
 Di PowerShell tulis `.\scripts\build.bat`. Argumen port pada `run-web.bat` opsional (bawaan 8888).
 
@@ -117,15 +117,23 @@ Di PowerShell tulis `.\scripts\build.bat`. Argumen port pada `run-web.bat` opsio
 chmod +x scripts/*.sh
 scripts/build.sh
 scripts/run-server.sh           # terminal 1
-scripts/run-web.sh 8888         # terminal 2, lalu buka http://localhost:8888
+scripts/run-web.sh              # terminal 2, lalu buka http://localhost:8888
 ```
 
 ### Tanpa skrip
 ```
 javac -cp lib/gson-2.15.0.jar -d out server/*.java client/*.java
-java -cp out:lib/gson-2.15.0.jar server.NetQuizServer              # Windows: pemisah ';'
+
+-- Linux / macOS --
+java -cp out:lib/gson-2.15.0.jar server.NetQuizServer              
 java -cp out:lib/gson-2.15.0.jar client.NetQuizWebBridge 8888
 java -cp out:lib/gson-2.15.0.jar client.NetQuizClient [host]       # klien CLI
+
+-- Windows --
+java -cp "out;lib/gson-2.15.0.jar" server.NetQuizServer
+java -cp "out;lib/gson-2.15.0.jar" client.NetQuizWebBridge 8888
+java -cp "out;lib/gson-2.15.0.jar" client.NetQuizClient [host]       # klien CLI
+
 ```
 
 ### Memakai GUI Web
