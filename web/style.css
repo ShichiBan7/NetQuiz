@@ -1,0 +1,97 @@
+  :root {
+    --bg:#0F172A; --panel:#1E293B; --panel2:#273449; --border:#334155;
+    --text:#E2E8F0; --muted:#94A3B8; --accent:#6366F1; --good:#22C55E;
+    --bad:#EF4444; --warn:#F59E0B; --pink:#F472B6;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body { background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, "Segoe UI", Roboto, sans-serif; }
+  .hidden { display: none !important; }
+  button, input, select { font: inherit; color: inherit; }
+  button { border: 0; border-radius: 10px; padding: 9px 16px; font-weight: 600; color: #fff; background: var(--panel2); cursor: pointer; transition: filter .12s; }
+  button:hover:not(:disabled) { filter: brightness(1.2); }
+  button:disabled { background: #2B3648; color: #64748B; cursor: not-allowed; }
+  button.primary { background: var(--accent); }
+  button.primary:disabled { background: #2B3648; }
+  input, select { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 9px 11px; width: 100%; outline: none; }
+  input:focus, select:focus { border-color: var(--accent); }
+  label { display: block; color: var(--muted); font-size: 12px; margin: 14px 0 5px; }
+
+  /* ---------- login ---------- */
+  #login { min-height: 100%; display: grid; place-items: center; padding: 16px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; }
+  #login .card { width: 100%; max-width: 400px; padding: 32px 36px; }
+  #login h1 { margin: 0; font-size: 26px; }
+  #login .sub { color: var(--muted); margin: 4px 0 6px; }
+  .row { display: flex; gap: 10px; } .row > div { flex: 1; }
+  #loginBtn { width: 100%; margin-top: 22px; padding: 12px; }
+  #loginStatus { min-height: 20px; margin-top: 12px; font-size: 13px; }
+
+  /* ---------- main ---------- */
+  #main { height: 100%; display: flex; flex-direction: column; padding: 14px; gap: 14px; }
+  header { display: flex; align-items: center; gap: 16px; padding: 10px 16px; }
+  header h2 { margin: 0; font-size: 18px; }
+  header .spacer { flex: 1; }
+  #player { font-weight: 700; color: var(--accent); filter: brightness(1.3); }
+  .layout { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 14px; }
+  .col { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+  .pad { padding: 16px; }
+
+  .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .controls select { width: auto; flex: 1; min-width: 140px; }
+  #meta { color: var(--muted); font-size: 12px; letter-spacing: .04em; margin: 18px 0 8px; text-transform: uppercase; }
+  #question { font-size: 19px; min-height: 64px; margin: 0 0 14px; }
+  .answers { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .answers button { text-align: left; padding: 14px 16px; font-weight: 600; color: #fff; }
+  .answers button[data-letter="A"] { background: #DC2626; }
+  .answers button[data-letter="B"] { background: #2563EB; }
+  .answers button[data-letter="C"] { background: #16A34A; }
+  .answers button[data-letter="D"] { background: #D68700; }
+  .answers button:disabled { opacity: .38; filter: saturate(.7); }
+  button.danger { background: #B91C1C; }
+  #lobbyBar { margin-top: 12px; font-size: 13px; color: var(--muted); }
+  #lobbyBar b { color: var(--text); }
+  .buzzrow { display: flex; align-items: center; gap: 14px; margin-top: 16px; }
+  #buzzBtn { background: var(--bad); font-size: 16px; letter-spacing: .05em; padding: 12px 28px; }
+  #buzzBtn:disabled { background: #2B3648; }
+  .timer { flex: 1; }
+  #timerLbl { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+  .bar { height: 10px; background: var(--bg); border-radius: 6px; overflow: hidden; }
+  #timerFill { height: 100%; width: 0; background: var(--accent); transition: width .9s linear, background .2s; }
+  #status { margin-top: 12px; min-height: 20px; font-weight: 600; }
+
+  .chat { flex: 1; min-height: 180px; display: flex; flex-direction: column; }
+  #chatLog { flex: 1; overflow-y: auto; padding: 12px 16px; font-size: 13px; }
+  #chatLog div { padding: 2px 0; word-break: break-word; }
+  #chatLog .t { color: #64748B; margin-right: 8px; }
+  .chatbar { display: flex; gap: 8px; padding: 12px; border-top: 1px solid var(--border); }
+  .chatbar select { width: 130px; flex: none; } .chatbar input { flex: 1; }
+
+  .side { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .tabs { display: flex; gap: 6px; padding: 10px; border-bottom: 1px solid var(--border); }
+  .tabs button { flex: 1; padding: 7px; font-size: 13px; }
+  .tabs button.sel { background: var(--accent); }
+  .pane { flex: 1; overflow-y: auto; padding: 8px 10px; }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; color: var(--muted); font-size: 11px; font-weight: 600; text-transform: uppercase; padding: 6px; }
+  td { padding: 8px 6px; border-top: 1px solid var(--border); }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.me td { color: var(--accent); filter: brightness(1.35); font-weight: 700; }
+  .off { color: #64748B; }
+  .solo { display: flex; justify-content: space-between; align-items: center; background: var(--panel2); border-radius: 10px; padding: 12px 14px; margin: 4px 0 14px; }
+  .solo span { color: var(--muted); } .solo b { font-size: 22px; font-variant-numeric: tabular-nums; }
+  #scorePane h3 { margin: 4px 4px 6px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+  .hint { color: var(--muted); font-size: 12px; padding: 8px; }
+  .badge { font-size: 11px; font-weight: 700; background: var(--accent); color: #fff; border-radius: 999px; padding: 2px 8px; margin-left: 8px; }
+  #players li { list-style: none; padding: 8px 10px; border-radius: 8px; cursor: pointer; }
+  #players li:hover { background: var(--panel2); } #players { margin: 0; padding: 0; }
+  #logPane { font: 12px/1.5 ui-monospace, Consolas, monospace; color: var(--muted); white-space: pre-wrap; word-break: break-all; }
+  #certBtn { margin: 10px; background: var(--good); color: #052e16; }
+  #certBtn:disabled { background: #2B3648; color: #64748B; }
+
+  @media (max-width: 900px) {
+    #main { height: auto; min-height: 100%; }
+    .layout { grid-template-columns: 1fr; }
+    .side { min-height: 340px; }
+    .answers { grid-template-columns: 1fr; }
+  }

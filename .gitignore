@@ -1,16 +1,17 @@
-# Compiled class file
+# Compiled class files
 *.class
+out/
 
-# Log file
+# Logs (berisi hostname & IP lokal)
 *.log
 
-# BlueJ files
+# BlueJ
 *.ctxt
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
+# Package files
 *.jar
 *.war
 *.nar
@@ -19,6 +20,21 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# PENGECUALIAN: dependensi Gson wajib ikut ter-push
+!lib/*.jar
+
+# JVM crash logs
 hs_err_pid*
 replay_pid*
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db

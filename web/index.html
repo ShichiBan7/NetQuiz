@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NetQuiz Arena</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================ LOGIN ============================ -->
+<section id="login">
+  <form class="card" id="loginForm" autocomplete="off">
+    <h1>NetQuiz Arena</h1>
+    <div class="sub">Kuis multiplayer real-time dengan buzzer UDP</div>
+    <label for="host">Alamat server</label>
+    <input id="host" value="localhost">
+    <label for="name">Nama pemain (3-16 huruf/angka/_)</label>
+    <input id="name" maxlength="16" placeholder="mis. budi_01" autofocus>
+    <div class="row">
+      <div><label for="tcp">Port TCP</label><input id="tcp" value="12345" inputmode="numeric"></div>
+      <div><label for="udp">Port UDP</label><input id="udp" value="12346" inputmode="numeric"></div>
+    </div>
+    <button class="primary" id="loginBtn" type="submit">Masuk Arena</button>
+    <div id="loginStatus"></div>
+  </form>
+</section>
+
+<!-- ============================ MAIN ============================= -->
+<section id="main" class="hidden">
+  <header class="card">
+    <h2>NetQuiz Arena</h2>
+    <span id="player">-</span>
+    <span class="spacer"></span>
+    <button id="logoutBtn">Keluar</button>
+  </header>
+
+  <div class="layout">
+    <div class="col">
+      <div class="card pad">
+        <div class="controls">
+          <select id="cat"></select>
+          <select id="diff"></select>
+          <button id="soloBtn">Soal Solo</button>
+          <button id="joinBtn" class="primary">Masuk Lobby Multiplayer</button>
+          <button id="startBtn" class="primary hidden">Mulai Ronde Multi</button>
+          <button id="leaveBtn" class="danger hidden">Keluar Lobby</button>
+        </div>
+        <div id="lobbyBar" class="hidden"></div>
+        <div id="meta"></div>
+        <p id="question"></p>
+        <div class="answers" id="answers"></div>
+        <div class="buzzrow">
+          <button id="buzzBtn" disabled>BUZZ!</button>
+          <div class="timer">
+            <div id="timerLbl">Waktu: -</div>
+            <div class="bar"><div id="timerFill"></div></div>
+          </div>
+        </div>
+        <div id="status"></div>
+      </div>
+
+      <div class="card chat">
+        <div id="chatLog"></div>
+        <form class="chatbar" id="chatForm" autocomplete="off">
+          <select id="to"><option>Semua</option></select>
+          <input id="chatInput" placeholder="Tulis pesan...">
+          <button class="primary" type="submit">Kirim</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card side">
+      <div class="tabs">
+        <button data-tab="scorePane" class="sel">Skor</button>
+        <button data-tab="playersPane">Pemain</button>
+        <button data-tab="logPane">Log</button>
+      </div>
+      <div class="pane" id="scorePane">
+        <div class="solo"><span>Poin Solo Anda</span><b id="soloScore">0</b></div>
+        <h3>Leaderboard Multiplayer</h3>
+        <table>
+          <thead><tr><th>#</th><th>Pemain</th><th style="text-align:right">Poin</th><th>Status</th></tr></thead>
+          <tbody id="scoreBody"></tbody>
+        </table>
+      </div>
+      <div class="pane hidden" id="playersPane"><ul id="players"></ul><div class="hint">Klik nama untuk chat privat. Lencana "Lobby" menandai pemain yang sedang di lobby multiplayer.</div></div>
+      <div class="pane hidden" id="logPane"></div>
+      <button id="certBtn">Unduh Sertifikat PDF</button>
+    </div>
+  </div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
